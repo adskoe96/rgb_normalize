@@ -16,7 +16,23 @@ function normalizeRGB() {
     document.getElementById('normalizedG').innerText = 'G: ' + normalizedG.toFixed(10);
     document.getElementById('normalizedB').innerText = 'B: ' + normalizedB.toFixed(10);
 
-    // Обновление цвета превью
+    var colorPreview = document.getElementById('colorPreview');
+    colorPreview.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+}
+
+function denormalizeRGB() {
+    var normalizedR = parseFloat(document.getElementById('normalizedR').innerText.split(': ')[1]);
+    var normalizedG = parseFloat(document.getElementById('normalizedG').innerText.split(': ')[1]);
+    var normalizedB = parseFloat(document.getElementById('normalizedB').innerText.split(': ')[1]);
+
+    var r = Math.round(normalizedR * 255);
+    var g = Math.round(normalizedG * 255);
+    var b = Math.round(normalizedB * 255);
+
+    document.getElementById('r').value = r;
+    document.getElementById('g').value = g;
+    document.getElementById('b').value = b;
+
     var colorPreview = document.getElementById('colorPreview');
     colorPreview.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
 }
@@ -55,6 +71,7 @@ function updateRGBValues(color) {
 <br><br>
 
 <button onclick="normalizeRGB()">Calculate</button>
+<button onclick="denormalizeRGB()">Convert Back to RGB</button>
 
 <h3>Normalized RGB Values:</h3>
 <p id="normalizedR">R: </p>
