@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Normalized to RGB Convert</title>
+<script>
+
+function denormalizeRGB() {
+    var r = document.getElementById('r').value;
+    var g = document.getElementById('g').value;
+    var b = document.getElementById('b').value;
+
+    var denormalizedR = Math.round(r * 255);
+    var denormalizedG = Math.round(g * 255);
+    var denormalizedB = Math.round(b * 255);
+
+    document.getElementById('standardR').innerText = denormalizedR;
+    document.getElementById('standardG').innerText = denormalizedG;
+    document.getElementById('standardB').innerText = denormalizedB;
+
+    var colorPreview = document.getElementById('colorPreview');
+    colorPreview.style.backgroundColor = 'rgb(' + denormalizedR + ',' + denormalizedG + ',' + denormalizedB + ')';
+}
+
+</script>
+</head>
+<body>
+
+<h2>Normalized to RGB Calculator</h2>
+
+<label for="r">R (0-255):</label>
+<input type="number" id="r" name="r" min="0" max="255">
+<br><br>
+
+<label for="g">G (0-255):</label>
+<input type="number" id="g" name="g" min="0" max="255">
+<br><br>
+
+<label for="b">B (0-255):</label>
+<input type="number" id="b" name="b" min="0" max="255">
+<br><br>
+
+<button onclick="denormalizeRGB()">Convert to Standard RGB</button>
+
+<h3>Standard RGB Values:</h3>
+<p id="standardR">R: </p>
+<p id="standardG">G: </p>
+<p id="standardB">B: </p>
+
+<h3>Color Preview:</h3>
+<div id="colorPreview" style="width:100px; height:100px; border:1px solid #000;"></div>
+
+</body>
+</html>
